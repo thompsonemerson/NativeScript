@@ -4,37 +4,40 @@ import frame = require("ui/frame");
 import observable = require("data/observable");
 import * as typesModule from "utils/types";
 import * as fileResolverModule  from "file-system/file-name-resolver";
+var __decorate = require("globals/decorators");
+import {lazyExtend} from "utils/lazy";
 
 global.moduleMerge(appModule, exports);
 var typedExports: typeof definition = exports;
 
-@JavaProxy("com.tns.NativeScriptApplication")
-class NativeScriptApplication extends android.app.Application {
+lazyExtend(exports, () =>
+    __decorate([JavaProxy("com.tns.NativeScriptApplication")],
+    class NativeScriptApplication extends android.app.Application {
+        constructor() {
+            super();
+            return global.__native(this);
+        }
 
-    constructor() {
-        super();
-        return global.__native(this);
-    }
+        public onCreate(): void {
+            androidApp.init(this);
+            setupOrientationListener(androidApp);
+        }
 
-    public onCreate(): void {
-        androidApp.init(this);
-        setupOrientationListener(androidApp);
-    }
+        public onLowMemory(): void {
+            gc();
+            java.lang.System.gc();
+            super.onLowMemory();
 
-    public onLowMemory(): void {
-        gc();
-        java.lang.System.gc();
-        super.onLowMemory();
+            typedExports.notify(<definition.ApplicationEventData>{ eventName: typedExports.lowMemoryEvent, object: this, android: this });
+        }
 
-        typedExports.notify(<definition.ApplicationEventData>{ eventName: typedExports.lowMemoryEvent, object: this, android: this });
-    }
-
-    public onTrimMemory(level: number): void {
-        gc();
-        java.lang.System.gc();
-        super.onTrimMemory(level);
-    }
-}
+        public onTrimMemory(level: number): void {
+            gc();
+            java.lang.System.gc();
+            super.onTrimMemory(level);
+        }
+    })
+);
 
 // We are using the exports object for the common events since we merge the appModule with this module's exports, which is what users will receive when require("application") is called;
 // TODO: This is kind of hacky and is "pure JS in TypeScript"

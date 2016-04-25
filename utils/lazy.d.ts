@@ -5,4 +5,12 @@ declare module "utils/lazy" {
      * Returns the evaluated result.
      */
     export default function lazy<T>(action: () => T): () => T;
+    
+    /**
+     * A function that executes the extend call immediately or delays
+     * it if running in the context of a snapshot.
+     * @param exports The current module exports object
+     * @param action The action that executs the Java extend call
+     */
+    export function lazyExtend(exports: any, action: () => void): void;
 }
