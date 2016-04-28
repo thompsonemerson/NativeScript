@@ -11,19 +11,19 @@ export class ImageSource implements definition.ImageSource {
     public ios: UIImage;
 
     public loadFromResource(name: string): boolean {
-        this.ios = UIImage.imageNamed(name) || UIImage.imageNamed(`${name}.jpg`);
+        this.ios = (<any>UIImage).tns_safeImageNamed(name) || (<any>UIImage).tns_safeImageNamed(`${name}.jpg`);
         return this.ios != null;
     }
 
     public fromResource(name: string): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
             try {
-                UIImage.imageNamed["async"](UIImage, [name]).then(image => {
+                (<any>UIImage).tns_safeDecodeImageNamedCompletion(name, image => {
                     if (image) {
                         this.ios = image;
                         resolve(true);
                     } else {
-                        UIImage.imageNamed["async"](UIImage, [`${name}.jpg`]).then(image => {
+                        (<any>UIImage).tns_safeDecodeImageNamedCompletion(`${name}.jpg`, image => {
                             this.ios = image;
                             resolve(true);
                         });
