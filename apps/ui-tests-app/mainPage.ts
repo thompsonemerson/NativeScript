@@ -38,15 +38,17 @@ examples.set("xmlbasics", "bindings/xmlbasics");
 
 examples.set("background", "css/background");
 examples.set("formatted", "css/decoration-transform-formattedtext");
+examples.set("csslv", "css/listview");
+examples.set("radius", "css/radius");
+examples.set("styles", "css/styles");
+examples.set("tabmore", "css/tab-view-more");
 examples.set("spacing", "css/letter-spacing");
 examples.set("decoration", "css/text-decoration");
 examples.set("transform", "css/text-transform");
 examples.set("whitespace", "css/white-space");
-examples.set("radius", "css/radius");
-examples.set("styles", "css/styles");
 examples.set("switch", "css/views");
-examples.set("tabmore", "css/tab-view-more");
-
+examples.set("zindex", "css/zindex");
+examples.set("clipPath", "css/clip-path");
 examples.set("dialogs", "dialogs/dialogs");
 
 examples.set("fontbtn", "font/button");
@@ -81,9 +83,10 @@ examples.set("modalview", "modal-view/modal-view");
 examples.set("nordic", "nordic/nordic");
 
 examples.set("padding", "padding/padding");
-
+examples.set("timePicker", "time-picker/time-picker");
 examples.set("gestures", "pages/gestures");
 examples.set("touch", "pages/touch-event");
+examples.set("pan", "pages/pan-event");
 examples.set("handlers", "pages/handlers");
 
 examples.set("animeBG", "animations/background");
