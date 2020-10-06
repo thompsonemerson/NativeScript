@@ -1,46 +1,50 @@
-# generated files
-*.map
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+node_modules
+package-lock.json
+yarn-lock.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+apps/**/*/*.js
+apps/**/*/*.map
+apps/**/*/platforms
+apps/**/*/webpack.*.js
 *.tgz
-.baseDir.ts
-.sublime-grunt.cache
-tscommand*.tmp.txt
-.tscache
-.vscode
 
-node_modules/
-dist/
-package/
-
-*.js
-!gruntfile.js
-!js-libs/**/*.*
-!css/**/*.*
-!css-value/**/*.*
-!fetch/**/*.*
-!apps/TelerikNEXT/lib/**/*.*
-!build/**/*.*
-CrossPlatformModules.sln.ide/
-*.suo
-CrossPlatformModules.suo
-CrossPlatformModules.v14.suo
-CrossPlatformModules.csproj.user
-bin/
-obj/
-.vs/
-
-.baseDir.ts
-.ctags-exclude
-tags
-
-TestRunResult.txt
-.testsapprun
-
-tns-core-modules.base.d.ts
-tns-core-modules.d.ts
-tns-core-modules.es6.d.ts
-
-tests/platforms/
-tests/lib/
-*.log
-
+# System Files
 .DS_Store
+Thumbs.db
+
+# core
+# https://github.com/NativeScript/nativescript-dev-webpack/issues/932
+!packages/core/xml/index.js
